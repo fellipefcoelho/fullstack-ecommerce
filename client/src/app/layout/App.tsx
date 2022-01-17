@@ -1,7 +1,12 @@
 import { ThemeProvider } from "@emotion/react";
 import { Container, createTheme, CssBaseline} from "@mui/material";
 import { useState} from "react";
+import { Route, Routes } from "react-router";
+import AboutPage from "../../features/about/AboutPage";
 import Catalog from "../../features/catalog/Catalog";
+import ProductDetails from "../../features/catalog/ProductDetails";
+import Contact from "../../features/contact/Contact";
+import HomePage from "../../features/home/HomePage";
 import Header from "./Header";
 
 function App() {
@@ -28,7 +33,13 @@ function App() {
         handleThemeChange={handleThemeChange}
       />
       <Container>
-        <Catalog/>
+          <Routes>
+            <Route path="/" element={<HomePage/>}/>
+            <Route path="/catalog/" element={<Catalog/>}/>
+            <Route path="/catalog/:id" element={<ProductDetails/>}/>
+            <Route path="/contact" element={<Contact/>}/>
+            <Route path="/about" element={<AboutPage/>}/>
+          </Routes>
       </Container>
     </ThemeProvider>
   );
